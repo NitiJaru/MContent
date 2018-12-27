@@ -24,6 +24,7 @@ export class HomePage {
       { Name: "Eslip receive detail", PageName: "EslipReceiveDetailPage"},
       { Name: "Membership shop select", PageName: "MembershipShopSelectPage"},
       { Name: "Edit name", PageName: "EditNamePage"},
+      { Name: "Onboarding", PageName: "OnboardingPage"},
     ];
   }
 
