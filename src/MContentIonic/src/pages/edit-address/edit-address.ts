@@ -16,6 +16,9 @@ export class EditAddressPage {
     public navParams: NavParams,
     private old_svc: ApiServiceProvider,
     private svc: ManaApiServiceProvider) {
+  }
+
+  ionViewDidLoad() {
     this.getAddress();
   }
 
