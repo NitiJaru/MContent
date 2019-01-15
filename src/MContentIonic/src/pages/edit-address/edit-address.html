@@ -3,30 +3,26 @@
   <ion-list >
       <ion-item>
         <ion-label >เลขที่</ion-label>
-        <ion-input type="text" [(ngModel)]="addressInfo.StreetAddress" ></ion-input>
+        <ion-input type="text" [(ngModel)]="addressInfo.streetAddress" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label >ตำบล</ion-label>
-        <ion-input type="text" [(ngModel)]="addressInfo.District" ></ion-input>
+        <ion-input type="text" [(ngModel)]="addressInfo.district" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label >อำเภอ</ion-label>
-        <ion-input type="text" [(ngModel)]="addressInfo.City" ></ion-input>
+        <ion-input type="text" [(ngModel)]="addressInfo.city" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label >จังหวัด</ion-label>
-        <ion-input type="text" [(ngModel)]="addressInfo.Province" ></ion-input>
+        <ion-input type="text" [(ngModel)]="addressInfo.province" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label >รหัสไปรษณีย์</ion-label>
-        <ion-input type="text" [(ngModel)]="addressInfo.PostalCode" ></ion-input>
+        <ion-input type="text" [(ngModel)]="addressInfo.postalCode" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button full (click)="saveAddress()">save</button>
       </ion-item>
   </ion-list>
-
-  {{ addressInfo.StreetAddress }}
-  {{ addressInfo.District }}
-  {{ addressInfo.City }}
-  {{ addressInfo.Province }}
-  {{ addressInfo.PostalCode }}
-
 </ion-content>

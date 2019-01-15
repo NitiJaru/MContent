@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the EditAddressPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ApiServiceProvider, Address } from '../../providers/api-service/api-service';
+import { ManaApiServiceProvider } from '../../providers/mana-api-service/mana-api-service';
 
 @IonicPage()
 @Component({
@@ -15,23 +10,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EditAddressPage {
 
-  // private addressInfo: Address = {
-  //   StreetAddress: "",
-  //   District: "",
-  //   City: "",
-  //   Province: "",
-  //   PostalCode: "",
-  // };
-  private addressInfo: Address= new Address();
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  addressInfo: Address = new Address();
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private svc: ApiServiceProvider,
+    private old_svc: ManaApiServiceProvider) {
+
+    this.getAddress();
+    // this.addressInfo = data;
+  }
+
+  async getAddress() {
+    await this.svc.getProfileAddress().then(res => {
+      console.log(res);
+      this.addressInfo = res;
+      console.log(this.addressInfo);
+    });
+  }
+
+  saveAddress() {
+    this.svc.saveProfileAddress(this.addressInfo);
   }
 }
 
-export class Address {
-  StreetAddress: string;
-  District: string;
-  City: string;
-  Province: string;
-  PostalCode: string;
-  constructor() { }
-}
