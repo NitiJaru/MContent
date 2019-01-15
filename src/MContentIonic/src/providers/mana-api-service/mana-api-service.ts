@@ -10,12 +10,19 @@ export class ManaApiServiceProvider {
   constructor() {
   }
 
+  public static AddressPromise;
+
   async getProfileAddress(): Promise<Address> {
-    return new Promise<Address>((resolve, reject) => {
+    var p = new Promise<Address>((resolve, reject) => {
+      ManaApiServiceProvider.AddressPromise = resolve;
       TheSHybridFunc("getManaApi", "https://devmock.azurewebsites.net/api/Profile/earn", data => {
         resolve(data);
       });
     });
+
+    ManaApiServiceProvider.AddressPromise = p;
+
+    return p;
   }
 
   saveProfileAddress(data) {
@@ -24,4 +31,7 @@ export class ManaApiServiceProvider {
 
 }
 
+export function manaSetProfileAddress(data) {
+  ManaApiServiceProvider.AddressPromise(data);
+}
 
