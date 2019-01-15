@@ -14,11 +14,9 @@ export class EditAddressPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private svc: ApiServiceProvider,
-    private old_svc: ManaApiServiceProvider) {
-
+    private old_svc: ApiServiceProvider,
+    private svc: ManaApiServiceProvider) {
     this.getAddress();
-    // this.addressInfo = data;
   }
 
   async getAddress() {
