@@ -8,14 +8,16 @@ declare var TheSHybridFunc;
 export class ManaApiServiceProvider {
 
   constructor() {
+    (<any>window).manaSetProfileAddress = this.setDataCallback;
   }
 
-  public static AddressPromise;
+  public AddressPromise;
 
-  async getProfileAddress(): Promise<Address> {
+  getProfileAddress(): Promise<Address> {
     return new Promise<Address>((resolve, reject) => {
-      ManaApiServiceProvider.AddressPromise = resolve;
+      this.AddressPromise = resolve;
       TheSHybridFunc("getManaApi", "https://devmock.azurewebsites.net/api/Profile/earn", data => {
+        alert('Got data in fn callback' + JSON.stringify(data));
         resolve(data);
       });
     });
@@ -25,9 +27,9 @@ export class ManaApiServiceProvider {
     TheSHybridCall("postManaApi", data);
   }
 
-}
+  setDataCallback(data) {
+    alert('Got data in setDataCallback()' + JSON.stringify(data));
+    this.AddressPromise(data);
+  }
 
-export function manaSetProfileAddress(data) {
-  ManaApiServiceProvider.AddressPromise(data);
 }
-
