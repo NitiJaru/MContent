@@ -25,4 +25,7 @@
         <button ion-button full (click)="saveAddress()">save</button>
       </ion-item>
   </ion-list>
+
+  {{ addressInfo | async | json }}
+
 </ion-content>
