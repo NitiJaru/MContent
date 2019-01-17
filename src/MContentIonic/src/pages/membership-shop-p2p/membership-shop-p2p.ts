@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the MembershipShopActionPage page.
+ * Generated class for the MembershipShopP2pPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-membership-shop-action',
-  templateUrl: 'membership-shop-action.html',
+  selector: 'page-membership-shop-p2p',
+  templateUrl: 'membership-shop-p2p.html',
 })
-export class MembershipShopActionPage {
+export class MembershipShopP2pPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MembershipShopActionPage');
+    console.log('ionViewDidLoad MembershipShopP2pPage');
   }
 
 }
