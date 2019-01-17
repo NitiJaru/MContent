@@ -23,6 +23,7 @@ export class HomePage {
       { Name: "Eslip approved", PageName: "EslipApprovedPage"},
       { Name: "Eslip receive detail", PageName: "EslipReceiveDetailPage"},
       { Name: "Membership shop select", PageName: "MembershipShopSelectPage"},
+      { Name: "Membership shop action", PageName: "MembershipShopActionPage"},
       { Name: "Edit name", PageName: "EditNamePage"},
       { Name: "Onboarding", PageName: "OnboardingPage"},
       { Name: "Edit address", PageName: "EditAddressPage"},
