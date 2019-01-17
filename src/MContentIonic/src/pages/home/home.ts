@@ -25,7 +25,9 @@ export class HomePage {
       { Name: "Membership shop select", PageName: "MembershipShopSelectPage"},
       { Name: "Edit name", PageName: "EditNamePage"},
       { Name: "Onboarding", PageName: "OnboardingPage"},
-      { Name: "Edit Address", PageName: "EditAddressPage"},
+      { Name: "Edit address", PageName: "EditAddressPage"},
+      { Name: "User profile", PageName: "UserProfilePage"},
+      { Name: "User account", PageName: "UserAccountPage"},
     ];
   }
 
