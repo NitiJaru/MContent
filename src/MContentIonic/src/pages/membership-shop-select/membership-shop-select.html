@@ -5,22 +5,13 @@
       <ion-input type="text" placeholder="Search"></ion-input>
     </ion-item>
     <h5 padding-left>เลือกสมาชิกร้าน</h5>
-    <ion-item>
+    <ion-item *ngFor="let shop of list">
       <ion-avatar item-start>
-        <img src="https://lh3.googleusercontent.com/xSE83PZIxYKq3GQLKqNAwjcNU4-ZqT1T8QDAINQc5PjWrOS_oIx8Lb76PNaQBubtluw=s180-rw">
+        <img [src]="shop.merchant.logo">
       </ion-avatar>
-      <h2>Promome</h2>
+      <h2>{{shop.merchant.name}}</h2>
       <p>
-        <ion-icon name="ios-person"></ion-icon> 2416 คน
-      </p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="https://lh3.googleusercontent.com/xSE83PZIxYKq3GQLKqNAwjcNU4-ZqT1T8QDAINQc5PjWrOS_oIx8Lb76PNaQBubtluw=s180-rw">
-      </ion-avatar>
-      <h2>P2P Loan</h2>
-      <p>
-        <ion-icon name="ios-person"></ion-icon> 1345 คน
+        <ion-icon name="ios-person"></ion-icon> {{shop.memberCount}} คน
       </p>
     </ion-item>
   </ion-list>
