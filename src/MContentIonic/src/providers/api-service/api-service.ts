@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MerchantResponse } from '../merchant-model/merchant-model';
 
 import 'rxjs/add/operator/map';
 
@@ -21,6 +22,9 @@ export class ApiServiceProvider {
     this.http.post("https://devmock.azurewebsites.net/api/Profile/earn", data);
   }
 
+  getMembershipList(): Promise<MerchantResponse[]> {
+    return this.http.get<MerchantResponse[]>("https://devmock.azurewebsites.net/api/Membership/merchant").toPromise<MerchantResponse[]>();
+  }
 }
 
 export class Address {

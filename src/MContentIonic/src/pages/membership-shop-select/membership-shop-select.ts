@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MerchantResponse, Merchant } from '../../providers/merchant-model/merchant-model';
 import { ManaApiServiceProvider } from '../../providers/mana-api-service/mana-api-service';
+import { ApiServiceProvider } from '../../providers/api-service/api-service';
 
 @IonicPage()
 @Component({
@@ -10,7 +11,7 @@ import { ManaApiServiceProvider } from '../../providers/mana-api-service/mana-ap
 })
 export class MembershipShopSelectPage {
   list: MerchantResponse[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public svc: ManaApiServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public svc: ApiServiceProvider) {
   }
 
   ionViewDidLoad() {
