@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Address } from '../api-service/api-service';
+import { MerchantResponse } from '../merchant-model/merchant-model';
 
 declare var TheSHybridCall;
 declare var TheSHybridFunc;
@@ -32,4 +33,27 @@ export class ManaApiServiceProvider {
     this.AddressPromise(data);
   }
 
+  getMembershipList(): Promise<MerchantResponse[]> {
+    return new Promise<MerchantResponse[]>((resolve, reject) => {
+      let data = [
+        {
+          merchant: {
+            _id: "1",
+            logo: "assets/imgs/logo.png",
+            name: "Promome"
+          },
+          memberCount: 2546
+        },
+        {
+          merchant: {
+            _id: "2",
+            logo: "assets/imgs/logo.png",
+            name: "P2P Loan"
+          },
+          memberCount: 1345
+        },
+      ];
+      resolve(data);
+    });
+  }
 }

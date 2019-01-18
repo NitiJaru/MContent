@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MerchantResponse, Merchant } from '../../providers/merchant-model/merchant-model';
+import { ManaApiServiceProvider } from '../../providers/mana-api-service/mana-api-service';
 
 @IonicPage()
 @Component({
@@ -9,27 +10,12 @@ import { MerchantResponse, Merchant } from '../../providers/merchant-model/merch
 })
 export class MembershipShopSelectPage {
   list: MerchantResponse[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public svc: ManaApiServiceProvider) {
   }
 
   ionViewDidLoad() {
-    this.list = [
-      {
-        merchant: {
-          _id: "1",
-          logo: "assets/imgs/logo.png",
-          name: "Promome"
-        },
-        memberCount: 2546
-      },
-      {
-        merchant: {
-          _id: "2",
-          logo: "assets/imgs/logo.png",
-          name: "P2P Loan"
-        },
-        memberCount: 1345
-      },
-    ];
+    this.svc.getMembershipList().then((data) => {
+      this.list = data;
+    })
   }
 }
