@@ -15,8 +15,8 @@ export class MembershipShopSelectPage {
   }
 
   ionViewDidLoad() {
-    this.svc.getMembershipList().then((data) => {
+    this.svc.getMemberships().then((data) => {
       this.list = data;
-    })
+    }, (error) => { })
   }
 }

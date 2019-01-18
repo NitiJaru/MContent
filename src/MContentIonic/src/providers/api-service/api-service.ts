@@ -20,8 +20,9 @@ export class ApiServiceProvider {
     this.http.post("https://devmock.azurewebsites.net/api/Profile/earn", data).subscribe();
   }
 
-  getMembershipList(): Promise<MerchantResponse[]> {
-    return this.http.get<MerchantResponse[]>("https://devmock.azurewebsites.net/api/Membership/merchant").toPromise<MerchantResponse[]>();
+  getMemberships(): Promise<MerchantResponse[]> {
+    let serviceId = "svc_code";
+    return this.http.get<MerchantResponse[]>("http://api-mana-demo.azurewebsites.net/api/"+ serviceId + "/Membership/memberships").toPromise<MerchantResponse[]>();
   }
 }
 
