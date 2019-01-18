@@ -17,7 +17,7 @@ export class ManaApiServiceProvider {
   getProfileAddress(): Promise<Address> {
     return new Promise<Address>((resolve, reject) => {
       this.AddressPromise = resolve;
-      TheSHybridFunc("getManaApi", "https://devmock.azurewebsites.net/api/Profile/earn", data => {
+      TheSHybridFunc("getManaApi", "https://devmock.azurewebsites.net/api/Profile/Address", data => {
         alert('Got data in fn callback' + JSON.stringify(data));
         resolve(data);
       });
