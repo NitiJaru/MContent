@@ -5,7 +5,7 @@
       <ion-input type="text" placeholder="Search"></ion-input>
     </ion-item>
     <h5 padding-left>เลือกสมาชิกร้าน</h5>
-    <a ion-item detail-none *ngFor="let shop of list" href="#">
+    <a ion-item detail-none *ngFor="let shop of list" href="https://s.manal.ink/membership/shop/{{shop.merchant._id}}">
       <ion-avatar item-start>
         <img [src]="shop.merchant.logo">
       </ion-avatar>

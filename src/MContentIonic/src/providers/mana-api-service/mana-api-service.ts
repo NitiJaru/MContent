@@ -35,25 +35,10 @@ export class ManaApiServiceProvider {
 
   getMembershipList(): Promise<MerchantResponse[]> {
     return new Promise<MerchantResponse[]>((resolve, reject) => {
-      let data = [
-        {
-          merchant: {
-            _id: "1",
-            logo: "assets/imgs/logo.png",
-            name: "Promome"
-          },
-          memberCount: 2546
-        },
-        {
-          merchant: {
-            _id: "2",
-            logo: "assets/imgs/logo.png",
-            name: "P2P Loan"
-          },
-          memberCount: 1345
-        },
-      ];
-      resolve(data);
+      TheSHybridFunc("getManaApi", "https://devmock.azurewebsites.net/api/Membership/merchant", data => {
+        alert('Got mock data in fn callback' + JSON.stringify(data));
+        resolve(data);
+      });
     });
   }
 }
