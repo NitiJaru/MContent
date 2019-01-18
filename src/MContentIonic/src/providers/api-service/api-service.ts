@@ -11,15 +11,13 @@ export class ApiServiceProvider {
   }
 
   getProfileAddress(): Promise<Address> {
-    return new Promise<Address>((resolve, reject) => {
-      this.http.get<Address>("https://devmock.azurewebsites.net/api/Profile/earn").subscribe(data => {
-        resolve(data);
-      });
-    });
+    var result = this.http.get<Address>("https://devmock.azurewebsites.net/api/Profile/earn").toPromise();
+    result.then((v) => { console.log(v) });
+    return result;
   }
 
   saveProfileAddress(data: Address): void {
-    this.http.post("https://devmock.azurewebsites.net/api/Profile/earn", data);
+    this.http.post("https://devmock.azurewebsites.net/api/Profile/earn", data).subscribe();
   }
 
   getMembershipList(): Promise<MerchantResponse[]> {

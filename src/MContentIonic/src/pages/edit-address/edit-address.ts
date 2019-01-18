@@ -10,28 +10,20 @@ import { ManaApiServiceProvider } from '../../providers/mana-api-service/mana-ap
 })
 export class EditAddressPage {
 
-  addressInfo: Address = new Address();
+  address: Promise<Address>;
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private old_svc: ApiServiceProvider,
     private svc: ManaApiServiceProvider) {
   }
 
-  ionViewDidLoad() {
+  ngOnInit() {
     this.getAddress();
   }
 
-  async getAddress() {
-    await this.svc.getProfileAddress().then(res => {
-      console.log(res);
-      this.addressInfo = res;
-      console.log(this.addressInfo);
-    });
-  }
-
-  saveAddress() {
-    this.svc.saveProfileAddress(this.addressInfo);
+  getAddress() {
+    this.address = this.svc.getProfileAddress();
   }
 }
 
