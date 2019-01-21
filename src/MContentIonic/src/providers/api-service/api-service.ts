@@ -22,7 +22,7 @@ export class ApiServiceProvider {
 
   getMemberships(): Promise<MerchantResponse[]> {
     let serviceId = "svc_code";
-    return this.http.get<MerchantResponse[]>("http://api-mana-demo.azurewebsites.net/api/"+ serviceId + "/Membership/memberships").toPromise<MerchantResponse[]>();
+    return this.http.get<MerchantResponse[]>("https://devmock.azurewebsites.net/api/Membership/merchant").toPromise<MerchantResponse[]>();
   }
 }
 

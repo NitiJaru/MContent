@@ -2,24 +2,25 @@ import { Injectable } from '@angular/core';
 import { Address } from '../api-service/api-service';
 import { MerchantResponse } from '../merchant-model/merchant-model';
 
-declare var TheSHybridCall;
-declare var TheSHybridFunc;
+declare function TheSHybridCall(methodName: string, parameter: string): void;
+declare function TheSHybridFunc(methodName: string, parameter: string, callback: any): void;
 
 @Injectable()
 export class ManaApiServiceProvider {
 
   constructor() {
+    console.log('Hello ProfileManaServiceProvider Provider');
     (<any>window).manaSetProfileAddress = this.setDataCallback;
   }
 
-  public AddressPromise;
+  public static promResolve;
 
   getProfileAddress(): Promise<Address> {
-    return new Promise<Address>((resolve, reject) => {
-      this.AddressPromise = resolve;
+    return new Promise<Address>((resolver, rejector) => {
+      ManaApiServiceProvider.promResolve = resolver;
       TheSHybridFunc("getManaApi", "https://devmock.azurewebsites.net/api/Profile/Address", data => {
         alert('Got data in fn callback' + JSON.stringify(data));
-        resolve(data);
+        resolver(data);
       });
     });
   }
@@ -30,15 +31,17 @@ export class ManaApiServiceProvider {
 
   setDataCallback(data) {
     alert('Got data in setDataCallback()' + JSON.stringify(data));
-    this.AddressPromise(data);
+    ManaApiServiceProvider.promResolve(data);
   }
 
-  getMembershipList(): Promise<MerchantResponse[]> {
-    return new Promise<MerchantResponse[]>((resolve, reject) => {
-      TheSHybridFunc("getManaApi", "https://devmock.azurewebsites.net/api/Membership/merchant", data => {
-        alert('Got mock data in fn callback' + JSON.stringify(data));
-        resolve(data);
+  getMemberships(): Promise<MerchantResponse[]> {
+    return new Promise<MerchantResponse[]>((resolver, rejector) => {
+      let serviceId = "svc_code";
+      TheSHybridFunc("getMemberedShop", "http://api-mana-demo.azurewebsites.net/api/"+ serviceId + "/Membership/memberships", (data) => {
+        alert('After call TheS Func');
+        resolver(data);
       });
+      alert('After call FN');
     });
   }
 }
